@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test'
+import { expect, Locator, Page } from '@playwright/test'
 import { OrderPage } from './order-page'
 import { SERVICE_URL } from '../../config/env-data'
 
@@ -28,6 +28,9 @@ export class LoginPage {
     await this.signInButton.click()
     return new OrderPage(this.page)
   }
-
-  // continue with the rest of the implementation below
+  async checkInnerComponents(): Promise<void> {
+    await expect(this.usernameField).toBeVisible()
+    await expect(this.passwordField).toBeVisible()
+    await expect(this.signInButton).toBeVisible()
+  }
 }
