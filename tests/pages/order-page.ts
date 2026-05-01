@@ -11,6 +11,8 @@ export class OrderPage {
   readonly commentInput: Locator
   readonly confirmationPopup: Locator
   readonly logoutButton: Locator
+  readonly userNameInputError: Locator
+  readonly phoneInputError: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -22,6 +24,8 @@ export class OrderPage {
     this.orderButton = page.getByTestId('createOrder-button')
     this.confirmationPopup = page.getByTestId('orderSuccessfullyCreated-popup')
     this.logoutButton = page.getByTestId('logout-button')
+    this.userNameInputError = page.getByTestId('username-input-error')
+    this.phoneInputError = page.getByTestId('phone-input-error')
   }
   async checkInnerComponents(): Promise<void> {
     await expect(this.title).toBeVisible()
@@ -41,5 +45,17 @@ export class OrderPage {
   }
   async checkCreateOrderBtnEnabled(enabled: boolean): Promise<void> {
     await expect(this.orderButton).toBeEnabled({ enabled })
+  }
+  async validationMessage(): Promise<void> {
+    await expect(this.userNameInputError).toHaveText('The field must contain at least of characters: 2')
+    await expect(this.phoneInputError).toHaveText('The field must contain at least of characters: 6')
+  }
+  async validationMessage2(): Promise<void> {
+    await expect(this.userNameInputError).toHaveText('The field must be filled in.')
+    await expect(this.phoneInputError).toHaveText('The field must be filled in.')
+  }
+  async noValidationErrors(): Promise<void> {
+    await expect(this.userNameInputError).not.toBeVisible()
+    await expect(this.phoneInputError).not.toBeVisible()
   }
 }

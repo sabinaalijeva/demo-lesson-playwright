@@ -1,7 +1,7 @@
 import { test } from '@playwright/test'
 import { LoginPage } from '../pages/login-page'
 import { PASSWORD, USERNAME } from '../../config/env-data'
-import { faker } from '@faker-js/faker/locale/ar'
+import { faker } from '@faker-js/faker/locale/en'
 
 test('Login test + order page components check', async ({ page }) => {
   const loginPage = new LoginPage(page)
