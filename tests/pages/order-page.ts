@@ -47,8 +47,12 @@ export class OrderPage {
     await expect(this.orderButton).toBeEnabled({ enabled })
   }
   async validationMessage(): Promise<void> {
-    await expect(this.userNameInputError).toHaveText('The field must contain at least of characters: 2')
-    await expect(this.phoneInputError).toHaveText('The field must contain at least of characters: 6')
+    await expect(this.userNameInputError).toHaveText(
+      'The field must contain at least of characters: 2',
+    )
+    await expect(this.phoneInputError).toHaveText(
+      'The field must contain at least of characters: 6',
+    )
   }
   async validationMessage2(): Promise<void> {
     await expect(this.userNameInputError).toHaveText('The field must be filled in.')
