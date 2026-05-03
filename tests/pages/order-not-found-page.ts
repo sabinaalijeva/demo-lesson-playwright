@@ -1,7 +1,7 @@
-import { BasePage } from './base-page'
 import { expect, Locator, Page } from '@playwright/test'
+import { AuthorizedPage } from './authorized-page'
 
-export class NotFoundPage extends BasePage {
+export class NotFoundPage extends AuthorizedPage {
   readonly container: Locator
 
   constructor(page: Page) {

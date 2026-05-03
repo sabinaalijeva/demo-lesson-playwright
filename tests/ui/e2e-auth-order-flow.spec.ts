@@ -40,6 +40,6 @@ test('Logout test', async ({ page }) => {
   await loginPage.checkFooterComponents()
   const orderPage = await loginPage.signIn(USERNAME, PASSWORD)
   await orderPage.checkFooterComponents()
-  await orderPage.logoutButton.click()
-  await loginPage.checkInnerComponents()
+  const returnedLoginPage = await orderPage.logout()
+  await returnedLoginPage.checkInnerComponents()
 })
